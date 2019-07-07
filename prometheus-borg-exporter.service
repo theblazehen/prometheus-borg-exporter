@@ -1,0 +1,17 @@
+[Unit]
+Description=Prometheus Borg exporter
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python /usr/bin/prometheus-borg-exporter.py
+ProtectHome=true
+NoNewPrivileges=true
+RestrictNamespaces=yes
+RestrictRealtime=yes
+ProtectKernelModules=true
+ProtectKernelTunables=true
+LockPersonality=true
+
+[Install]
+WantedBy=multi-user.target
