@@ -23,6 +23,20 @@ The backup directory's can be configured in borg.yml with the backups
 directories in the 'dirs' list. The metrics use the basename of the directory
 as the "backup host".
 
+# Example Promethues AlertManager rule
+
+  - name: backup
+  interval: 60s
+  rules:
+  - alert: backup
+    expr: borg_last_modified > 5
+    for: 20m
+    labels:
+      severity: warning
+    annotations:
+      description: 'host {{ $labels.instance }} has outdated backups'
+      summary: '{{ $labels.instance }} backups are {{ $value }} days old'
+
 # Not implemented
 
 There is no support for decrypting the backups.
