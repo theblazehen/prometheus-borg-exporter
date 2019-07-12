@@ -25,6 +25,7 @@ as the "backup host".
 
 # Example Promethues AlertManager rule
 
+```yaml
   - name: backup
   interval: 60s
   rules:
@@ -36,6 +37,7 @@ as the "backup host".
     annotations:
       description: 'host {{ $labels.instance }} has outdated backups'
       summary: '{{ $labels.instance }} backups are {{ $value }} days old'
+```
 
 # Not implemented
 
