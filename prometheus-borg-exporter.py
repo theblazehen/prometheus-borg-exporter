@@ -22,7 +22,7 @@ class BorgCollector():
         self.dirs = data['dirs']
 
     def collect(self):
-        cache_keys = {'total_csize': 'Compressed size', 'total_size': 'Original size'}
+        cache_keys = {'total_csize': 'Compressed size', 'total_size': 'Original size', 'unique_csize': 'Deduplicated size'}
         repo_keys = {'last_modified': 'Last backup date'}
 
         for d in self.dirs:
