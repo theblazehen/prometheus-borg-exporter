@@ -54,7 +54,7 @@ class BorgCollector:
                 diff = datetime.now() - datetime.strptime(
                     repo[key], "%Y-%m-%dT%H:%M:%S.%f"
                 )
-                value = 0 if diff.days < 0 else diff.days
+                value = 0 if diff.seconds < 0 else diff.seconds
                 metric.add_sample(mkey, value=value, labels={"host": host})
                 yield metric
 
