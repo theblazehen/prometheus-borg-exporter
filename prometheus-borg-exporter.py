@@ -49,7 +49,9 @@ class BorgCollector:
             for key, desc in repo_keys.items():
                 mkey = f"borg_{key}"
                 metric = Metric(mkey, desc, "gauge")
-                diff = datetime.now() - datetime.fromisoformat(repo[key])
+                diff = datetime.now() - datetime.strptime(
+                    repo[key], "%Y-%m-%dT%H:%M:%S.%f"
+                )
                 value = 0 if diff.days < 0 else diff.days
                 metric.add_sample(mkey, value=value, labels={"host": host})
                 yield metric
