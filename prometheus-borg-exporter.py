@@ -82,7 +82,7 @@ def main():
     REGISTRY.register(BorgCollector(data))
 
     app = make_wsgi_app()
-    httpd = make_server("", args.port, app)
+    httpd = make_server("127.0.0.1", args.port, app)
     httpd.serve_forever()
 
 
