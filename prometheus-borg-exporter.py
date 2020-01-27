@@ -36,7 +36,9 @@ class BorgCollector:
         for d in self.dirs:
             host = basename(d)
             data = json.loads(
-                subprocess.check_output(["/usr/bin/borg", "info", d, "--json"])
+                subprocess.check_output(
+                    ["/usr/bin/borg", "info", d, "--json"], stdin="y"
+                )
             )
             stats = data["cache"]["stats"]
             for key, desc in cache_keys.items():
