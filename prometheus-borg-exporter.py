@@ -37,7 +37,7 @@ class BorgCollector:
             host = basename(d)
             data = json.loads(
                 subprocess.check_output(
-                    ["/usr/bin/borg", "info", d, "--json"], stdin="y"
+                    ["/usr/bin/borg", "info", d, "--json"], input=b"y"
                 )
             )
             stats = data["cache"]["stats"]
